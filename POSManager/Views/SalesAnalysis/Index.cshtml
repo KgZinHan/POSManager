@@ -1,0 +1,136 @@
+﻿@model SalesAnalysis
+
+@{
+    ViewData["Title"] = "Sales Analysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section links {
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/lib/adminlte3/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/lib/adminlte3/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <style type="text/css">
+        .form-check-input {
+            width: 23px;
+            height: 23px;
+            margin-left: -2rem;
+            margin-top: 0.08rem;
+        }
+
+        #loader-wrapper {
+            position: relative;
+            height: 500px;
+            background: #fff; /* background color of the loader wrapper */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #loader {
+            border: 8px solid #f3f3f3; /* light grey */
+            border-top: 8px solid #3498db; /* blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        #content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+}
+
+@section scripts
+{
+    <!-- Select2 -->
+    <script src="~/lib/adminlte3/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Custom Js for this form -->
+    <script src="~/javascript/SaleAnalysis.js"></script>
+    <script>
+        $(function () {
+            $('.select2').select2()
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        });
+    </script>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2 class="display-4"><b>@ViewData["Title"]</b></h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card card-gray mt-1">
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group row">
+                        <label class="col-6 col-form-label">Branch Name</label>
+                        <div class="col-6">
+                            <select id="filterBranchNme" asp-for="@Model.BranchName" class="form-control select2bs4" asp-items="ViewBag.BranchNames" style="width: 100%;">
+                                <option value=""> - Select All - </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group row">
+                        <label class="col-6 col-form-label">From Date</label>
+                        <div class="col-6">
+                            <input id="filterFromDte" asp-for="@Model.FromDate" type="date" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group row">
+                        <label class="col-6 col-form-label">For Next in-days</label>
+                        <div class="col-6">
+                            <input id="filterNextDay" asp-for="@Model.NextDay" type="number" min="0" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group row">
+                        <label class="col-6">
+                            <select id="filterMode" class="form-control select2bs4 col-10">
+                                <option value="Top">Top</option>
+                                <option value="Bottom">Bottom</option>
+                            </select>
+                        </label>
+                        <div class="col-6">
+                            <input id="filterTopBottom" asp-for="@Model.TopBottom" type="number" min="0" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input class="btn" type="submit" value="Search" style="background-color: #31849B;color: white" onclick="searchSales()" />
+        </div>
+
+        <div id="loader-wrapper" style="display: none">
+            <div id="loader"></div>
+        </div>
+        <div id="saleAnalysisBody" class="card-body p-1">
+        </div>
+    </div>
+</section>
+

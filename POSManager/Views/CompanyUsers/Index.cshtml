@@ -1,0 +1,109 @@
+﻿@model IEnumerable<CompanyUser>
+
+@{
+    ViewData["Title"] = "Company User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section links {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/lib/adminlte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/adminlte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/adminlte3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+}
+
+@section scripts
+{
+    <!-- DataTables  & Plugins -->
+    <script src="~/lib/adminlte3/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/jszip/jszip.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": false, "lengthChange": false, "autoWidth": false, "ordering": false, "info": false,"searching": false ,"paging": false
+            });
+        });
+    </script>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-6">
+                <h4>@ViewData["Title"]</h4>
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb float-right active">
+                    <a class="btn btn-default" style="background-color: #31849B;color: white" asp-action="Create">Create New  <i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-gray">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"] List</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 table-responsive">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LoginNme)
+                                    </th>
+                                    <th style="min-width: 100px">
+                                        @Html.DisplayNameFor(model => model.ActiveFlg)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CreateDteTime)
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LoginNme)
+                                        </td>
+                                        <td style="text-align: center">
+                                            @Html.DisplayFor(modelItem => item.ActiveFlg)
+                                        </td>
+                                        <td class="text-truncate">
+                                            @Convert.ToDateTime(item.CreateDteTime).ToString("dd MMM yyyy hh:mm:ss tt")
+                                        </td>
+                                        <td style="text-align: center">
+                                            <a asp-action="Edit" asp-route-id="@item.LoginNme"><i class="fas fa-edit" style="color: #31849B"></i></a>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <a asp-action="Delete" asp-route-id="@item.LoginNme"><i class="fas fa-trash" style="color: #31849B"     ></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
