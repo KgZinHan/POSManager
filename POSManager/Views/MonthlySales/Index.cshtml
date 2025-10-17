@@ -8,8 +8,8 @@
 
 @section links {
     <!-- Select2 -->
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <style type="text/css">
         .form-check-input {
             width: 23px;
@@ -56,7 +56,7 @@
 @section scripts
 {
     <!-- Select2 -->
-    <script src="~/lib/adminlte3/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/select2/js/select2.full.min.js"></script>
     <!-- Custom Js for this form -->
     <script src="~/javascript/MonthlySale.js"></script>
     <script>
@@ -70,25 +70,28 @@
 }
 
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
+    <div class="container">
+        <div class="row">
             <div class="col-sm-6">
-                <h2 class="display-4"><b>@ViewData["Title"]</b></h2>
+                <h3><b>@ViewData["Title"]</b></h3>
             </div>
         </div>
     </div>
 </section>
 <section class="content">
-    <div class="card card-gray mt-1">
-
-        <div class="card-body">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Search By</h3>
+            </div>
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
                         <div class="form-group row">
                             <label class="col-6 col-form-label">Branch Name</label>
                             <div class="col-6">
                                 <select id="filterBranchNme" asp-for="@Model.BranchName" class="form-control select2bs4" asp-items="ViewBag.BranchNames" style="width: 100%;">
-                                <option value="">- Select All -</option>
+                                    <option value="">- Select All -</option>
                                 </select>
                             </div>
                         </div>
@@ -97,7 +100,7 @@
                         <div class="form-group row">
                             <label class="col-6 col-form-label">Category</label>
                             <div class="col-6">
-                            <select id="filterCatg" asp-for="@Model.Category" class="form-control select2bs4" asp-items="ViewBag.Categories" style="width: 100%;">
+                                <select id="filterCatg" asp-for="@Model.Category" class="form-control select2bs4" asp-items="ViewBag.Categories" style="width: 100%;">
                                     <option value="">- Select All -</option>
                                 </select>
                             </div>
@@ -112,12 +115,14 @@
                         </div>
                     </div>
                 </div>
-                <input class="btn" type="submit" value="View" style="background-color: #31849B;color: white" onclick="viewMonthlySales()"/>
-        </div>
-        <div id="loader-wrapper" style="display: none">
-            <div id="loader"></div>
-        </div>
-        <div id="monthlySaleBody" class="card-body p-1">
+                <input class="btn" type="submit" value="View" style="background-color: #31849B;color: white" onclick="viewMonthlySales()" />
+                <div id="loader-wrapper" style="display: none">
+                    <div id="loader"></div>
+                </div>
+                <div id="monthlySaleBody">
+                </div>
+            </div>
+           
         </div>
     </div>
 </section>

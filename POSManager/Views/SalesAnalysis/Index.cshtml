@@ -56,7 +56,7 @@
 @section scripts
 {
     <!-- Select2 -->
-    <script src="~/lib/adminlte3/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/select2/js/select2.full.min.js"></script>
     <!-- Custom Js for this form -->
     <script src="~/javascript/SaleAnalysis.js"></script>
     <script>
@@ -70,66 +70,69 @@
 }
 
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
+    <div class="container">
+        <div class="row">
             <div class="col-sm-6">
-                <h2 class="display-4"><b>@ViewData["Title"]</b></h2>
+                <h3><b>@ViewData["Title"]</b></h3>
             </div>
         </div>
     </div>
 </section>
 <section class="content">
-    <div class="card card-gray mt-1">
-
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group row">
-                        <label class="col-6 col-form-label">Branch Name</label>
-                        <div class="col-6">
-                            <select id="filterBranchNme" asp-for="@Model.BranchName" class="form-control select2bs4" asp-items="ViewBag.BranchNames" style="width: 100%;">
-                                <option value=""> - Select All - </option>
-                            </select>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Search By</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group row">
+                            <label class="col-6 col-form-label">Branch Name</label>
+                            <div class="col-6">
+                                <select id="filterBranchNme" asp-for="@Model.BranchName" class="form-control select2bs4" asp-items="ViewBag.BranchNames" style="width: 100%;">
+                                    <option value=""> - Select All - </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group row">
+                            <label class="col-6 col-form-label">From Date</label>
+                            <div class="col-6">
+                                <input id="filterFromDte" asp-for="@Model.FromDate" type="date" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group row">
+                            <label class="col-6 col-form-label">For Next in-days</label>
+                            <div class="col-6">
+                                <input id="filterNextDay" asp-for="@Model.NextDay" type="number" min="0" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group row">
+                            <label class="col-6">
+                                <select id="filterMode" class="form-control select2bs4 col-10">
+                                    <option value="Top">Top</option>
+                                    <option value="Bottom">Bottom</option>
+                                </select>
+                            </label>
+                            <div class="col-6">
+                                <input id="filterTopBottom" asp-for="@Model.TopBottom" type="number" min="0" class="form-control" />
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group row">
-                        <label class="col-6 col-form-label">From Date</label>
-                        <div class="col-6">
-                            <input id="filterFromDte" asp-for="@Model.FromDate" type="date" class="form-control" />
-                        </div>
-                    </div>
+                <input class="btn" type="submit" value="Search" style="background-color: #31849B;color: white" onclick="searchSales()" />
+                <div id="loader-wrapper" style="display: none">
+                    <div id="loader"></div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group row">
-                        <label class="col-6 col-form-label">For Next in-days</label>
-                        <div class="col-6">
-                            <input id="filterNextDay" asp-for="@Model.NextDay" type="number" min="0" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group row">
-                        <label class="col-6">
-                            <select id="filterMode" class="form-control select2bs4 col-10">
-                                <option value="Top">Top</option>
-                                <option value="Bottom">Bottom</option>
-                            </select>
-                        </label>
-                        <div class="col-6">
-                            <input id="filterTopBottom" asp-for="@Model.TopBottom" type="number" min="0" class="form-control" />
-                        </div>
-                    </div>
+                <div id="saleAnalysisBody">
                 </div>
             </div>
-            <input class="btn" type="submit" value="Search" style="background-color: #31849B;color: white" onclick="searchSales()" />
-        </div>
-
-        <div id="loader-wrapper" style="display: none">
-            <div id="loader"></div>
-        </div>
-        <div id="saleAnalysisBody" class="card-body p-1">
         </div>
     </div>
 </section>

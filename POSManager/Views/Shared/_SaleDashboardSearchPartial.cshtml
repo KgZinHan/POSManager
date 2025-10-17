@@ -2,9 +2,9 @@
 
 @section links {
     <!-- DataTables -->
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <style type="text/css">
         .form-check-input {
             width: 23px;
@@ -18,27 +18,19 @@
 @section scripts
 {
     <!-- DataTables  & Plugins -->
-    <script src="~/lib/adminlte3/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/jszip/jszip.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="~/lib/adminlte3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 }
 
 <div class="row mt-3">
-    <div class="col-md-12 table-responsive" style="max-height: 500px">
-        <table id="example1" class="table table-bordered dataTable dtr-inline" aria-describedby="example1_info">
+    <div class="col-md-12 table-responsive">
+        <table id="example1" class="table table-bordered dataTable dtr-inline" >
             <thead>
                 <tr style="font-size: 16px">
-                    <th>
-                        No.
+                    <th class="text-center" style="width: 50px">
+                        #
                     </th>
                     <th>
                         Branch
@@ -53,13 +45,13 @@
                 @foreach (var data in Model.SaleDashboardList)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => data.No)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => data.No)</td>
                         <td>@Html.DisplayFor(modelItem => data.Branch)</td>
                         <td style="text-align: right">@Html.DisplayFor(modelItem => data.SaleAmount)</td>
                         <td style="text-align: center">
                             <a asp-action="DateWiseSales" asp-controller="SaleDashboard"
                                asp-route-name="@data.Branch" asp-route-fromDate="@Model.SaleDashboard.FromDate"
-                               asp-route-toDate="@Model.SaleDashboard.ToDate" style="color : #31849B">...</a>
+                               asp-route-toDate="@Model.SaleDashboard.ToDate" style="color : #31849B" class="text-center"><i class="fas fa-ellipsis-h"></i></a>
                         </td>
                     </tr>
                 }
@@ -77,24 +69,20 @@
 <div class="card collapsed-card ">
     <div class="card-header">
         <h3 class="card-title">Currencies</h3>
-
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-plus"></i>
             </button>
         </div>
     </div>
     <div class="card-body">
         <div class="row mt-3">
-            <div class="col-md-12 table-responsive" style="max-height: 500px">
+            <div class="col-md-12 table-responsive">
                 <table id="example2" class="table table-bordered dataTable dtr-inline" aria-describedby="example2_info">
                     <thead>
                         <tr style="font-size: 16px">
-                            <th>
-                                No.
+                            <th style="width: 50px">
+                                #
                             </th>
                             <th>
                                 Currency
@@ -108,7 +96,7 @@
                         @foreach (var data in Model.SaleCurrList)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => data.No)</td>
+                                <td class="text-center">@Html.DisplayFor(modelItem => data.No)</td>
                                 <td>@Html.DisplayFor(modelItem => data.CurrCde)</td>
                                 <td style="text-align: right">@Html.DisplayFor(modelItem => data.SaleAmount)</td>
                             </tr>

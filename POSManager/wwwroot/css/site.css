@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+@font-face {
+    font-family: 'Cambria-R';
+    src: url('../lib/Cambria-Font/Cambria-Font-For-Windows.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

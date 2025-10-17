@@ -167,7 +167,7 @@ namespace POSManager.Controllers
 
             ViewData["BranchName"] = name;
 
-            ViewData["Date"] = date.ToString("dd MMM yyyy");
+            ViewData["Date"] = date.ToString("dd-MMM-yyyy");
 
             return View(itemWiseSaleList);
         }

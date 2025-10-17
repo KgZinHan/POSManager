@@ -43,7 +43,6 @@ function viewYearlySales() {
 
 function showYearlyDonutChart(inputData) {
 
-    console.log('I am here');
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d');
     $.ajax({
         url: '/YearlySales/GetDonutChartData',

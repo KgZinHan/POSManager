@@ -9,27 +9,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>POS Manager | MVC</title>
-    
+    <title>POS Manager</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/lib/adminlte3/dist/css/adminlte.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/fontawesome-free/css/all.min.css">
     <!-- BS Stepper -->
-    <link rel="stylesheet" href="~/lib/adminlte3/plugins/bs-stepper/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE3/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/lib/AdminLTE3/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="font-family: Cambria-R">
     <div class="login-box">
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 ">
+                        <div class="text-center">
+                            <label>version 2.0.0</label>
+                        </div>
                         <div class="card">
                             <div class="card-header" style="background-color: #31849B;color: white">
                                 <h3 class="text-center">POS Manager Login</h3>
@@ -60,7 +59,7 @@
                                             <div class="form-group">
                                                 <label asp-for="Pwd">Password</label>
                                                 <input asp-for="Pwd" type="password" class="form-control" id="Pwd" placeholder="Password" onkeydown="checkEnter(event)">
-                                            </div>  
+                                            </div>
                                             <button class="btn btn-default" style="background-color: #31849B;color: white" id="btnNext" onclick="checkLogin()">Login</button>
                                         </div>
                                         <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
@@ -80,7 +79,6 @@
                         <p style="text-align: center" class="mt-1">developed by Fortified City</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -88,15 +86,13 @@
 
     <!-- /.login-box -->
     <!-- jQuery -->
-    <script src="~/lib/adminlte3/plugins/jquery/jquery.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="~/lib/adminlte3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="~/lib/adminlte3/dist/js/adminlte.min.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="~/lib/adminlte3/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/lib/AdminLTE3/dist/js/adminlte.min.js"></script>
     <!-- BS-Stepper -->
-    <script src="~/lib/adminlte3/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <!-- Custom Js for this form -->
     <script src="~/javascript/Login.js"></script>
     <script>
@@ -105,7 +101,6 @@
         })
         var stepper = new Stepper(document.querySelector('.bs-stepper'))
         stepper.next()
-
     </script>
 </body>
 </html>

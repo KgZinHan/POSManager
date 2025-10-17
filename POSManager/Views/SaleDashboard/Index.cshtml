@@ -16,22 +16,23 @@
             margin-left: -2rem;
             margin-top: 0.08rem;
         }
+
         #loader-wrapper {
-          position: relative;
-          height: 500px;
-          background: #fff; /* background color of the loader wrapper */
-          display: flex;
-          justify-content: center;
-          align-items: center;
+            position: relative;
+            height: 500px;
+            background: #fff; /* background color of the loader wrapper */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #loader {
-          border: 8px solid #f3f3f3; /* light grey */
-          border-top: 8px solid #3498db; /* blue */
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          animation: spin 1s linear infinite;
+            border: 8px solid #f3f3f3; /* light grey */
+            border-top: 8px solid #3498db; /* blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
         }
 
         #content {
@@ -48,15 +49,14 @@
                 transform: rotate(360deg);
             }
         }
-        
     </style>
 }
-     
+
 
 @section scripts
 {
     <!-- Select2 -->
-    <script src="~/lib/adminlte3/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/lib/AdminLTE3/plugins/select2/js/select2.full.min.js"></script>
     <!-- Custom Js for this form -->
     <script src="~/javascript/SaleDashboard.js"></script>
     <script>
@@ -71,26 +71,29 @@
 
 
 <section class="content-header">
- 
-    <div class="container-fluid">
+
+    <div class="container">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h2 class="display-4"><b>@ViewData["Title"]</b></h2>
+                <h3><b>@ViewData["Title"]</b></h3>
             </div>
         </div>
     </div>
 </section>
 <section class="content">
-    <div class="card mt-1">
-
-        <div class="card-body">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Search By</h4>
+            </div>
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
                         <div class="form-group row">
                             <label class="col-6 col-form-label">Branch Name</label>
                             <div class="col-6">
                                 <select id="filterBranchNme" asp-for="@Model.SaleDashboard.BranchName" class="form-control select2bs4" asp-items="ViewBag.BranchNames" style="width: 100%;">
-                                <option value="">- Select All -</option>
+                                    <option value="">- Select All -</option>
                                 </select>
                             </div>
                         </div>
@@ -112,12 +115,14 @@
                         </div>
                     </div>
                 </div>
-                <input class="btn" type="button" value="Search" style="background-color: #31849B;color: white" onclick="searchSales()"/>
-        </div>
-        <div id="loader-wrapper" style="display: none">
-            <div id="loader"></div>
-        </div>
-        <div id="mainBody" class="card-body p-1">
+                <input class="btn" type="button" value="Search" style="background-color: #31849B;color: white" onclick="searchSales()" />
+                <div id="loader-wrapper" style="display: none">
+                    <div id="loader"></div>
+                </div>
+                <div id="mainBody">
+                </div>
+            </div>
+            
         </div>
     </div>
 </section>

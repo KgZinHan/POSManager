@@ -5,16 +5,16 @@
         <table id="example1" class="table table-bordered dataTable dtr-inline" aria-describedby="example1_info">
             <thead>
                 <tr style="font-size: 16px">
-                    <th>
-                        No.
+                    <th class="text-center" style="width: 50px">
+                        #
                     </th>
                     <th>
                         Item Description
                     </th>
-                    <th>
+                    <th class="text-right">
                         Qty
                     </th>
-                    <th>
+                    <th class="text-right">
                         Sale Amount
                     </th>
                 </tr>
@@ -23,9 +23,9 @@
                 @foreach (var data in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => data.No)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => data.No)</td>
                         <td>@Html.DisplayFor(modelItem => data.ItemDesc)</td>
-                        <td>@Html.DisplayFor(modelItem => data.Qty)</td>
+                        <td class="text-right">@Html.DisplayFor(modelItem => data.Qty)</td>
                         <td style="text-align: right">@Html.DisplayFor(modelItem => data.SaleAmount)</td>
                     </tr>
                 }
